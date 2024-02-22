@@ -1,8 +1,17 @@
 import express from "express";
-import dotenv from "dotenv";
+import connectToDataBase from "./config/dbConnect.js";
+
+const connection = await connectToDataBase();
+
+connection.on("error", (erro) => {
+    console.error("Erro de conexão:", erro);
+});
+
+connection.once("open",  () => {
+    console.log("Conexão com o banco de dados feita com sucesso...");
+})
 
 const app = express();
-dotenv.config();
 
 // Middlewares
 app.use(express.json());
