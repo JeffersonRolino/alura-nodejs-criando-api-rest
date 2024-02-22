@@ -1,10 +1,7 @@
 import mongoose from "mongoose";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 async function connectToDataBase(){
-    mongoose.connect(process.env.DB_KEY);
+    mongoose.connect(process.env.DB_CONNECTION_STRING);
 
     return mongoose.connection;
 };
