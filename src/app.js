@@ -15,15 +15,4 @@ connection.once("open",  () => {
 const app = express();
 routes(app);
 
-app.post("/livros", (req, res) => {
-    livros.push(req.body);
-    res.status(201).send("livro cadastrado com sucesso");
-});
-
-app.delete("/livros/:id", (req, res) => {
-    const index = buscaLivro(req.params.id);
-    livros.splice(index, 1);
-    res.status(200).send("Livro removido com sucesso");
-});
-
 export default app;
